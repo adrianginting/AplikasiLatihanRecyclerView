@@ -20,8 +20,8 @@ class ListHeroAdapter(private val listHero: ArrayList<Hero>) : RecyclerView.Adap
         holder.imgPhoto.setImageResource(photo)
         holder.tvName.text = name
         holder.tvDescription.text = description
-    }
 
+    }
 
     override fun getItemCount(): Int = listHero.size
 
