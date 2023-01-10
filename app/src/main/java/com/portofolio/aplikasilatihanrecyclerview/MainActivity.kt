@@ -8,19 +8,20 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.portofolio.aplikasilatihanrecyclerview.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var rvHeroes: RecyclerView
+    private lateinit var binding: ActivityMainBinding
+    //private lateinit var rvHeroes: RecyclerView
     private val list = ArrayList<Hero>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        rvHeroes = findViewById(R.id.rv_heroes)
-        rvHeroes.setHasFixedSize(true)
-
+        binding.rvHeroes.setHasFixedSize(true)
 
         list.addAll(getListHeroes())
         showRecyclerView()
@@ -34,10 +35,10 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.action_list -> {
-                rvHeroes.layoutManager = LinearLayoutManager(this)
+                binding.rvHeroes.layoutManager = LinearLayoutManager(this)
             }
             R.id.action_grid -> {
-                rvHeroes.layoutManager = GridLayoutManager(this,2)
+                binding.rvHeroes.layoutManager = GridLayoutManager(this,2)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -56,9 +57,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showRecyclerView() {
-        rvHeroes.layoutManager = LinearLayoutManager(this)
+        binding.rvHeroes.layoutManager = LinearLayoutManager(this)
         val listHeroAdapter = ListHeroAdapter(list)
-        rvHeroes.adapter = listHeroAdapter
+        binding.rvHeroes.adapter = listHeroAdapter
 
         listHeroAdapter.setOnItemClickCallback(object : ListHeroAdapter.OnItemClickCallback{
             override fun onItemClicked(data: Hero) {

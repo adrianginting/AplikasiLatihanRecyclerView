@@ -8,6 +8,10 @@ android {
     namespace 'com.portofolio.aplikasilatihanrecyclerview'
     compileSdk 32
 
+    buildFeatures {
+        viewBinding true
+    }
+
     defaultConfig {
         applicationId "com.portofolio.aplikasilatihanrecyclerview"
         minSdk 21
